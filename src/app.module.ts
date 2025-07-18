@@ -8,6 +8,10 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { BooksModule } from './books/books.module';
+import { ReadingIntervalsModule } from './reading-intervals/reading-intervals.module';
+import { Book } from './books/book.entity';
+import { User } from './users/user.entity';
+import { ReadingInterval } from './reading-intervals/reading-interval.entity';
 
 @Module({
   imports: [
@@ -24,9 +28,12 @@ import { BooksModule } from './books/books.module';
       synchronize: true, 
     }),
 
+    TypeOrmModule.forFeature([ReadingInterval, Book, User]),
+
     AuthModule,
     UsersModule,
     BooksModule,
+    ReadingIntervalsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
