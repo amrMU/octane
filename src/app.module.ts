@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
@@ -12,6 +12,7 @@ import { ReadingIntervalsModule } from './reading-intervals/reading-intervals.mo
 import { Book } from './books/book.entity';
 import { User } from './users/user.entity';
 import { ReadingInterval } from './reading-intervals/reading-interval.entity';
+import { LoggerMiddleware } from './common/middleware/logger.middleware';
 
 @Module({
   imports: [
@@ -38,4 +39,9 @@ import { ReadingInterval } from './reading-intervals/reading-interval.entity';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*'); 
+  }
+}
