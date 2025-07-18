@@ -104,6 +104,4 @@ src/
 ### 🔗 Useful Links
 GitHub Repo: https://github.com/amrMU/octane
 
-Postman Docs: https://docume
-nter.getpostman.com/view/1256078/2sB34imfJr
-
+Postman Docs: https://documenter.getpostman.com/view/1256078/2sB34imfJr
